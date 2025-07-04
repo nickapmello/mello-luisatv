@@ -21,7 +21,7 @@ jobs:
 
       - name: Instalar dependências
         run: |
-          pip install robotframework selenium
+          pip install -r requirements.txt
 
       - name: Executar testes
         run: |
