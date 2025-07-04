@@ -14,6 +14,25 @@ jobs:
       - name: Clonar repositório
         uses: actions/checkout@v3
 
+      - name: Instalar Chrome e ChromeDriver compatíveis (versão 138)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget unzip
+          
+          # Baixar o NAVEGADOR Chrome for Testing (versão 138)
+          wget https://storage.googleapis.com/chrome-for-testing-public/116.0.5845.96/linux64/chrome-linux64.zip
+          unzip chrome-linux64.zip
+          
+          # Baixar o DRIVER ChromeDriver compatível (versão 138)
+          wget https://storage.googleapis.com/chrome-for-testing-public/116.0.5845.96/linux64/chromedriver-linux64.zip
+          unzip chromedriver-linux64.zip
+          
+          # Mover os binários para um local padrão no PATH
+          # Isso garante que o Selenium encontre os executáveis corretos.
+          sudo mv chrome-linux64/chrome /usr/bin/google-chrome
+          sudo mv chromedriver-linux64/chromedriver /usr/bin/chromedriver
+          sudo chmod +x /usr/bin/google-chrome /usr/bin/chromedriver
+
       - name: Instalar Python
         uses: actions/setup-python@v4
         with:
@@ -21,7 +40,13 @@ jobs:
 
       - name: Instalar dependências
         run: |
-          pip install robotframework selenium
+          pip install -r requirements.txt
+
+      - name: Iniciar servidor local
+        run: |
+          nohup python -m http.server 8000 &
+          sleep 5
+          curl http://localhost:8000/home.html
 
       - name: Executar testes
         run: |
