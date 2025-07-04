@@ -1,17 +1,16 @@
 *** Settings ***
-Documentation     Teste automatizado do fluxo de login e compra
-Library           SeleniumLibrary
+Library    SeleniumLibrary
 
 *** Variables ***
-${URL_LOGIN}         http://localhost:8000/home.html
-${URL_LOJA}          http://localhost:8000/loja.html
-${BROWSER}           Chrome
-${OPCOES}            --headless --disable-gpu --no-sandbox --disable-dev-shm-usage
+${URL_LOGIN}     http://localhost:8000/home.html
+${URL_LOJA}      http://localhost:8000/loja.html
+${BROWSER}       Chrome
+${ARGS}          --headless --disable-gpu --no-sandbox --disable-dev-shm-usage
 
 *** Test Cases ***
 
 Login com Sucesso e Acesso à Loja
-    Open Browser    ${URL_LOGIN}    ${BROWSER}    options=${OPCOES}
+    Open Browser    ${URL_LOGIN}    ${BROWSER}    chrome_options=${ARGS}
     Input Text      id=campoUsuario    admin
     Input Text      id=campoSenha      1234
     Click Button    xpath=//button[@type='submit']
@@ -20,7 +19,7 @@ Login com Sucesso e Acesso à Loja
     Close Browser
 
 Adicionar Item e Finalizar Compra
-    Open Browser    ${URL_LOGIN}    ${BROWSER}    options=${OPCOES}
+    Open Browser    ${URL_LOGIN}    ${BROWSER}    chrome_options=${ARGS}
     Input Text      id=campoUsuario    admin
     Input Text      id=campoSenha      1234
     Click Button    xpath=//button[@type='submit']
@@ -30,7 +29,7 @@ Adicionar Item e Finalizar Compra
     Close Browser
 
 Finalizar Compra com Carrinho Vazio
-    Open Browser    ${URL_LOGIN}    ${BROWSER}    options=${OPCOES}
+    Open Browser    ${URL_LOGIN}    ${BROWSER}    chrome_options=${ARGS}
     Input Text      id=campoUsuario    admin
     Input Text      id=campoSenha      1234
     Click Button    xpath=//button[@type='submit']
