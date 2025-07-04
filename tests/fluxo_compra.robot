@@ -1,11 +1,20 @@
 *** Settings ***
 Library    SeleniumLibrary
+Library    Collections
+Library    OperatingSystem
+Library    BuiltIn
+Library    String
+Library    Process
+Library    Random
+
 
 *** Variables ***
 ${URL_LOGIN}     http://localhost:8000/home.html
 ${URL_LOJA}      http://localhost:8000/loja.html
 ${BROWSER}       Chrome
-${ARGS}          --headless --disable-gpu --no-sandbox --disable-dev-shm-usage --user-data-dir=/tmp/chrome-profile
+${DIR_UNICO}    Evaluate    "/tmp/chrome-profile-${random.randint(1000,9999)}"    random
+${ARGS}         --headless --no-sandbox --disable-dev-shm-usage --user-data-dir=${DIR_UNICO}
+
 
 *** Test Cases ***
 
