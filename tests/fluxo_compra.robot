@@ -16,7 +16,7 @@ ${BROWSER}       Chrome
 *** Test Cases ***
 
 Login com Sucesso e Acesso à Loja
-    ${RANDOM_DIR}=    Evaluate    "/tmp/chrome-profile-${random.randint(1000,9999)}"    random
+    ${RANDOM_DIR}=    Evaluate    "/tmp/chrome-profile-%d" % __import__('random').randint(1000,9999)
     ${ARGS}=    Set Variable    --headless --no-sandbox --disable-dev-shm-usage --user-data-dir=${RANDOM_DIR}
     Open Browser    ${URL_LOGIN}    ${BROWSER}    chrome_options=${ARGS}
     Input Text      id=campoUsuario    admin
@@ -27,7 +27,7 @@ Login com Sucesso e Acesso à Loja
     Close Browser
 
 Adicionar Item e Finalizar Compra
-    ${RANDOM_DIR}=    Evaluate    "/tmp/chrome-profile-${random.randint(1000,9999)}"    random
+    ${RANDOM_DIR}=    Evaluate    "/tmp/chrome-profile-%d" % __import__('random').randint(1000,9999)
     ${ARGS}=    Set Variable    --headless --no-sandbox --disable-dev-shm-usage --user-data-dir=${RANDOM_DIR}
     Open Browser    ${URL_LOGIN}    ${BROWSER}    chrome_options=${ARGS}
     Input Text      id=campoUsuario    admin
@@ -39,7 +39,7 @@ Adicionar Item e Finalizar Compra
     Close Browser
 
 Finalizar Compra com Carrinho Vazio
-    ${RANDOM_DIR}=    Evaluate    "/tmp/chrome-profile-${random.randint(1000,9999)}"    random
+    ${RANDOM_DIR}=    Evaluate    "/tmp/chrome-profile-%d" % __import__('random').randint(1000,9999)
     ${ARGS}=    Set Variable    --headless --no-sandbox --disable-dev-shm-usage --user-data-dir=${RANDOM_DIR}
     Open Browser    ${URL_LOGIN}    ${BROWSER}    chrome_options=${ARGS}
     Input Text      id=campoUsuario    admin
