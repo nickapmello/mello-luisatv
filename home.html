@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Entrar no Sistema</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="tela-login">
+    <h1>Bem-vindo!</h1>
+    <form id="formLogin" onsubmit="return autenticarUsuario()">
+      <div>
+        <label for="campoUsuario">Usuário:</label>
+        <input type="text" id="campoUsuario" required />
+      </div>
+      <div>
+        <label for="campoSenha">Senha:</label>
+        <input type="password" id="campoSenha" required />
+      </div>
+      <button type="submit">Acessar</button>
+    </form>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Catálogo de Produtos</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h2>Loja Virtual</h2>
+  </header>
+
+  <section class="conteudo">
+    <div class="produtos">
+      <h3>Disponíveis</h3>
+      <ul id="listaProdutos"></ul>
+    </div>
+
+    <div class="carrinho">
+      <h3>Seu Carrinho</h3>
+      <ul id="listaCarrinho"></ul>
+      <button onclick="esvaziarCarrinho()">Limpar</button>
+      <button onclick="concluirCompra()">Finalizar</button>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
