@@ -1,24 +1,23 @@
 *** Settings ***
-Library    SeleniumLibrary
-Library    Collections
-Library    OperatingSystem
-Library    BuiltIn
-Library    String
-Library    Process
-Library    Random
-
+Documentation     Teste automatizado do fluxo de login e compra
+Library           SeleniumLibrary
+Library           Collections
+Library           OperatingSystem
+Library           BuiltIn
+Library           String
+Library           Process
+Library           Random
 
 *** Variables ***
 ${URL_LOGIN}     http://localhost:8000/home.html
 ${URL_LOJA}      http://localhost:8000/loja.html
 ${BROWSER}       Chrome
-${DIR_UNICO}    Evaluate    "/tmp/chrome-profile-${random.randint(1000,9999)}"    random
-${ARGS}         --headless --no-sandbox --disable-dev-shm-usage --user-data-dir=${DIR_UNICO}
-
 
 *** Test Cases ***
 
 Login com Sucesso e Acesso à Loja
+    ${RANDOM_DIR}=    Evaluate    "/tmp/chrome-profile-${random.randint(1000,9999)}"    random
+    ${ARGS}=    Set Variable    --headless --no-sandbox --disable-dev-shm-usage --user-data-dir=${RANDOM_DIR}
     Open Browser    ${URL_LOGIN}    ${BROWSER}    chrome_options=${ARGS}
     Input Text      id=campoUsuario    admin
     Input Text      id=campoSenha      1234
@@ -28,6 +27,8 @@ Login com Sucesso e Acesso à Loja
     Close Browser
 
 Adicionar Item e Finalizar Compra
+    ${RANDOM_DIR}=    Evaluate    "/tmp/chrome-profile-${random.randint(1000,9999)}"    random
+    ${ARGS}=    Set Variable    --headless --no-sandbox --disable-dev-shm-usage --user-data-dir=${RANDOM_DIR}
     Open Browser    ${URL_LOGIN}    ${BROWSER}    chrome_options=${ARGS}
     Input Text      id=campoUsuario    admin
     Input Text      id=campoSenha      1234
@@ -38,6 +39,8 @@ Adicionar Item e Finalizar Compra
     Close Browser
 
 Finalizar Compra com Carrinho Vazio
+    ${RANDOM_DIR}=    Evaluate    "/tmp/chrome-profile-${random.randint(1000,9999)}"    random
+    ${ARGS}=    Set Variable    --headless --no-sandbox --disable-dev-shm-usage --user-data-dir=${RANDOM_DIR}
     Open Browser    ${URL_LOGIN}    ${BROWSER}    chrome_options=${ARGS}
     Input Text      id=campoUsuario    admin
     Input Text      id=campoSenha      1234
