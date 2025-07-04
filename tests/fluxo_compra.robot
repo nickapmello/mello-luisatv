@@ -5,7 +5,7 @@ Library    SeleniumLibrary
 ${URL_LOGIN}     http://localhost:8000/home.html
 ${URL_LOJA}      http://localhost:8000/loja.html
 ${BROWSER}       Chrome
-${ARGS}          --headless --disable-gpu --no-sandbox --disable-dev-shm-usage
+${ARGS}          --headless --disable-gpu --no-sandbox --disable-dev-shm-usage --user-data-dir=/tmp/chrome-profile
 
 *** Test Cases ***
 
